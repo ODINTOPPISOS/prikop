@@ -1,0 +1,20 @@
+h1{
+    color:blue;
+}
+.zxc{
+    color:green;
+    background-color: blueviolet;
+    width: 10px;
+    height:10px;
+}
+li{
+    padding-left: 5px;
+    width: 10px;
+    height:10px;
+    border: 1px green solid;
+    border-radius: 25px;
+}
+p {
+    color:red;
+    border: blueviolet 2 solid;
+}

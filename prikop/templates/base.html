@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+      <h1>Hello!</h1>
+  <h2 style='color: rgb {{colorf}}'>Ваш id - {{id}}!</h2>
+      {% if id > 50 %}
+        <p>Вам везёт</p>
+      {% else %}
+        <p>Вам не везёт</p>
+      {% endif %}
+        <a href='/'>Назад</a>
+      {%for i in rand_num%}
+        <p class='zxc'>{{i}}</p>
+      {%endfor%}
+      
+  </body>
+</html>

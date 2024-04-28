@@ -1,0 +1,13 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{title}}</title>
+        {% else %}
+        <title>Здарова привет</title>
+        {% endif %}
+    </head>
+    <body>
+        <h1>Hello, {{user}}!</h1>
+        <p><a href={{rand_id}}>Прикоп {{rand_id}}</a></p>
+    </body>
+</html>
