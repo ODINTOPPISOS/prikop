@@ -1,45 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from random import randint
-from zxc import get_question_after
+#from zxc import get_question_after
 #from requests import *
+import json
 app = Flask(__name__)
 import sqlite3
-"""posts = '''<form method="POST">\
-            <input type="submit" value="Submit">\
-        </form>'''
-
-q = 0
-l = 0
-@app.route("/")
-def index():
-    global q, l
-    q = 1
-    return '<a href="/test">Тест</a>'
-@app.route("/test", methods=['GET', 'POST'])
-def test():
-    global l, q
-    res = get_question_after(l, q)
-    if request.method == 'POST':
-        l = 0
-        q = 1
-        return '<p>' + str(q) + str(res) + '</p>' + '</br>' + '<a href="/test">Next</a>' + '</br>' + posts
-    if res is None or len(res) == 0:
-        return redirect(url_for('result'))
-    else:
-        l = res[0]
-        return '<p>' + str(q) + str(res) + '</p>' + '</br>' + '<a href="/test">Next</a>' + '</br>' + posts
-
-@app.route("/result")
-def result():
-    global l, q
-    l = 0
-    q = 1
-    return '<p>qwe</p>'
-app.config['SECRET_KEY'] = 'VeryStrongKey'
 
 
 
-"""
 @app.route('/test', methods=['GET', 'POST'])
 def test():
     if request.method == 'POST':
@@ -59,14 +27,26 @@ def form_example():
     if request.method == 'POST':
         name = request.form.get('name')
         password = request.form.get('password')
-        if name == 'misha' and password == '123':
-            return '<h1> Вход выполнен </h1>'
-        else:
-            return '<h1> Вход не выполнен </h1>'
+        bd = {}
+        with open('bd.json', "w") as file1:
+            bd[name] = password
+            json.dump(bd, file1)
+        return redirect('/login')
     return a
 
 
-
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        password = request.form.get('password')
+        with open('bd.json', "r") as file:
+            bd1 = json.load(file)
+            if name in bd1.keys():
+                if bd1[name] == password:
+                    return '<h1>Ку</h1>'
+        return '<h1>Не ку</h1>'
+    return a
 if __name__ == "__main__":
     app.run(debug=True)
 """    
